@@ -6,10 +6,13 @@ import PreloaderScene from './scenes/Preloader';
 import TitleScene from './scenes/Title';
 import CreditsScene from './scenes/CreditsScene';
 import OptionsScene from './scenes/OptionsScene';
+import Model from './Model';
 
 class Game extends Phaser.Game {
   constructor(){
     super(config);
+    const model = new Model();
+    this.globals = { model, bgMusic: null };
     this.scene.add('Boot', BootScene);
     this.scene.add('Preloader', PreloaderScene);
     this.scene.add('Title', TitleScene);
