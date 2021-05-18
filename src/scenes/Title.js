@@ -6,10 +6,6 @@ export default class TitleScene extends Phaser.Scene {
     super('Title');
   }
 
-  preload() {
-
-  }
-
   create() {
     this.gameButton = this.add.sprite(100, 200, 'blueButton1').setInteractive();
     this.centerButton(this.gameButton, 1);
@@ -28,6 +24,38 @@ export default class TitleScene extends Phaser.Scene {
     this.input.on('pointerout', function(event, gameObjects) {
       gameObjects[0].setTexture('blueButton1');
     });
+
+    // SETTINGS BUTTON
+
+    this.optionsButton = this.add.sprite(300, 200, 'blueButton1').setInteractive();
+    this.centerButton(this.optionsButton);
+
+    this.optionsText = this.add.text(0, 0, 'Settings', { fontSize: '32px', fill: '#fff'});
+    this.centerButtonText(this.optionsText, this.optionsButton);
+
+    this.optionsButton.on('pointerdown', function(pointer) {
+      this.scene.start('Settings');
+    }.bind(this));
+
+    // CREDITS BUTTON
+
+    this.creditsButton = this.add.sprite(300, 200, 'blueButton1').setInteractive();
+    this.centerButton(this.creditsButton, -1);
+
+    this.creditsText = this.add.text(0, 0, 'Credits', { fontSize: '32px', fill: '#fff'});
+    this.centerButtonText(this.creditsText, this.creditsButton);
+
+    this.creditsButton.on('pointerdown', function(pointer) {
+      this.scene.start('Credits');
+    }.bind(this));
+
+    this.input.on('pointerover', function(event, gameObjects){
+      gameObjects[0].setTexture('blueButton2');
+    });
+
+    this.input.on('pointerout', function(event, gameObjects){
+      gameObjects[0].setTexture('blueButton1');
+    })
   }
 
   centerButton (gameObject, offset = 0) {
