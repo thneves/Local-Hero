@@ -11,14 +11,14 @@ export default class PreloaderScene extends Phaser.Scene {
 
   preload() {
     this.cameras.main.fadeIn(800, 0, 0, 0);
-    this.add.image(400, 150, 'logo').setScale(2);
+    this.add.image(400, 150, 'logo');
 
     // display progress bar
 
     let progressBar = this.add.graphics();
     let progressBox = this.add.graphics();
     progressBox.fillStyle(0x22222, 0.8);
-    progressBox.fillRect(240, 490, 320, 30);
+    progressBox.fillRect(240, 490, 320, 50);
 
     let width = this.cameras.main.width;
     let height = this.cameras.main.height;
@@ -92,11 +92,12 @@ export default class PreloaderScene extends Phaser.Scene {
     this.load.image('blueButton2', 'assets/ui/blue_button03.png');
     this.load.image('box', 'assets/ui/grey_box.png');
     this.load.image('checkedBox', 'assets/ui/blue_boxCheckmark.png');
-    this.load.audio('bgMusic', ['assets/TownTheme.mp3']);
+    this.load.audio('bgMusic', 'assets/ui/TownTheme.mp3');
   }
 
 
   ready () {
+    this.scene.start('Title');
     this.readyCount++;
     if (this.readyCount === 2) {
       this.scene.start('Title')
