@@ -8,6 +8,8 @@ export default class TitleScene extends Phaser.Scene {
   }
 
   create() {
+
+    this.add.image(400,300, 'bgMenu').setScale(0.4)
     // Game
     this.gameButton = new Button(
         this,
@@ -43,7 +45,7 @@ export default class TitleScene extends Phaser.Scene {
 
     if (this.model.musicOn === true && this.model.bgMusicPlaying === false) {
       this.bgMusic = this.sound.add('bgMusic', { volume: 0.5, loop: true });
-      this.bgMusic.play();
+      // this.bgMusic.play();
       this.model.bgMusicPlaying = true;
       this.sys.game.globals.bgMusic = this.bgMusic;
     }
