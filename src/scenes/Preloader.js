@@ -107,8 +107,8 @@ export default class PreloaderScene extends Phaser.Scene {
     });
 
     this.load.spritesheet("sprEnemy0", 'assets/chars/sprEnemy0.png', {
-      frameWidth: 16,
-      frameHeight: 16
+      frameWidth: 20,
+      frameHeight: 100
     });
 
     this.load.image("sprEnemy1", 'assets/chars/sprEnemy1.png');
@@ -118,7 +118,7 @@ export default class PreloaderScene extends Phaser.Scene {
       frameHeight: 16
     });
 
-    this.load.image("sprEnemyArrow", 'assets/chars/sprEnemyArrow.png');
+    this.load.image("sprEnemyLaser", 'assets/chars/sprEnemyLaser.png');
     this.load.image("sprPlayerArrow", 'assets/chars/sprPlayerArrow.png');
     this.load.spritesheet("sprPlayer", 'assets/chars/sprPlayer.png', {
       frameWidth: 64,
@@ -130,9 +130,6 @@ export default class PreloaderScene extends Phaser.Scene {
     this.load.audio("sndExplode0", 'assets/audio/sndExplode0.wav');
     this.load.audio("sndExplode1", 'assets/audio/sndExplode1.wav');
     this.load.audio("sndArrow", 'assets/audio/sndArrow.wav');
-
-
-
   }
 
 
