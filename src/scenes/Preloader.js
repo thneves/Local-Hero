@@ -107,15 +107,15 @@ export default class PreloaderScene extends Phaser.Scene {
     });
 
     this.load.spritesheet("sprEnemy0", 'assets/chars/sprEnemy0.png', {
-      frameWidth: 20,
-      frameHeight: 100
+      frameWidth: 10,
+      frameHeight: 50
     });
 
     this.load.image("sprEnemy1", 'assets/chars/sprEnemy1.png');
 
     this.load.spritesheet("sprEnemy2", 'assets/chars/sprEnemy2.png', {
-      frameWidth: 16,
-      frameHeight: 16
+      frameWidth: 20,
+      frameHeight: 100
     });
 
     this.load.image("sprEnemyLaser", 'assets/chars/sprEnemyLaser.png');

@@ -1,6 +1,8 @@
 import 'phaser';
+import Chaser from '../entities/Chaser';
 import GunShip from '../entities/GunShip';
 import Player from '../entities/Player';
+import Submarine from '../entities/Submarine';
 
 export default class GameScene extends Phaser.Scene {
   constructor() {
@@ -59,14 +61,39 @@ export default class GameScene extends Phaser.Scene {
     this.playerArrows = this.add.group();
 
     this.time.addEvent({
-      delay: 100,
+      delay: 1350,
       callback: function() {
-        let enemy = new GunShip(
-          this,
-          Phaser.Math.Between(0, this.game.config.width),
-          0
-        );
-        this.enemies.add(enemy)
+        let enemy = null;
+
+        if (Phaser.Math.Between(0, 10) >= 3) {
+          enemy = new GunShip(
+            this,
+            Phaser.Math.Between(0, this.game.config.width),
+            0
+          );
+        }
+        else if (Phaser.Math.Between(0, 10) >= 5) {
+          if (this.getEnemiesByType("ChaserShip").length < 5) {
+
+            enemy = new Chaser(
+              this,
+              Phaser.Math.Between(0, this.game.config.width),
+              0
+            );
+          }
+        }
+        else {
+          enemy = new Submarine(
+            this,
+            Phaser.Math.Between(0, this.game.config.width),
+            0
+          );
+        }
+
+        if (enemy !== null) {
+          enemy.setScale(Phaser.Math.Between(10, 20) * 0.1);
+          this.enemies.add(enemy);
+        }
       },
       callbackScope: this,
       loop: true
@@ -87,5 +114,22 @@ export default class GameScene extends Phaser.Scene {
     } else if (this.keyD.isDown) {
       this.player.moveRight();
     }
+
+    for (var i = 0; i < this.enemies.getChildren().length; i++) {
+      let enemy = this.enemies.getChildren()[i];
+
+      enemy.update();
+    }
+  }
+
+  getEnemiesByType(type) {
+    let arr = [];
+    for (let i = 0; i < this.enemies.getChildren().length; i++) {
+      let enemy = this.enemies.getChildren()[i];
+      if (enemy.getData('type') == type) {
+        arr.push(enemy);
+      }
+    }
+    return arr;
   }
 }
