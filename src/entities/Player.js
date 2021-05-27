@@ -1,3 +1,4 @@
+import 'phaser';
 import Entity from './Entities';
 import PlayerArrows from './PlayerArrow';
 
@@ -42,7 +43,7 @@ export default class Player extends Entity {
         this.scene.playerArrows.add(arrow);
 
         this.scene.sfx.arrow.play();
-        this.setData("timeShootTick", 0)
+        this.setData("timerShootTick", 0)
       }
     }
   }

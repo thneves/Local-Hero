@@ -4,6 +4,7 @@ import GunShip from '../entities/GunShip';
 import Player from '../entities/Player';
 import Submarine from '../entities/Submarine';
 
+
 export default class GameScene extends Phaser.Scene {
   constructor() {
     super('Game');
@@ -22,10 +23,10 @@ export default class GameScene extends Phaser.Scene {
     });
 
     this.anims.create({
-      key: "sprEnemy2",
-      frames: this.anims.generateFrameNumbers("sprEnemy2"),
+      key: "sprExplosion",
+      frames: this.anims.generateFrameNumbers("sprExplosion"),
       frameRate: 20,
-      repeat: -1
+      repeat: 0
     });
 
     this.anims.create({
@@ -98,9 +99,37 @@ export default class GameScene extends Phaser.Scene {
       callbackScope: this,
       loop: true
     });
+
+    this.physics.add.collider(this.playerArrows, this.enemies, function(playerArrow, enemy){
+      if (enemy) {
+        if (enemy.onDestroy !== undefined) {
+          enemy.onDestroy();
+        }
+
+        enemy.explode(true);
+        playerArrow.destroy();
+      }
+    })
+
+    this.physics.add.overlap(this.player, this.enemies, function(player, enemy) {
+      if (!player.getData("isDead") &&
+         !enemy.getData("isDead")) {
+           player.explode(false);
+           enemy.explode(true);
+         }
+    });
+
+    this.physics.add.collider(this.player, this.enemyLasers, function(player, laser) {
+      if (!player.getData("isDead") &&
+        !laser.getData("isDead")) {
+          player.explode(false);
+          laser.destroy();
+        }
+    })
   }
 
   update() {
+
     this.player.update();
 
     if (this.keyW.isDown) {

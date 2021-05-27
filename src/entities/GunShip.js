@@ -1,3 +1,4 @@
+import 'phaser';
 import Enemylaser from "./EnemyLaser";
 import Entity from "./Entities";
 
