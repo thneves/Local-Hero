@@ -9,6 +9,10 @@ export default class TitleScene extends Phaser.Scene {
 
   create() {
 
+    this.load.image('sprBtnRestart', 'assets/ui/sprBtnRestart.png');
+    this.load.image('sprBtnRestartDown', 'assets/ui/sprBtnRestartDown.png')
+    this.load.image('sprBtnRestartHover', 'assets/ui/sprBtnRestartHover.png')
+
     this.add.image(400,300, 'bgMenu').setScale(0.4)
     // Game
     this.gameButton = new Button(
@@ -39,7 +43,15 @@ export default class TitleScene extends Phaser.Scene {
       'blueButton2',
       'Credits',
       'Credits'
-    )
+    );
+
+    this.title = this.add.text(this.game.config.width * 0.1, 75, "FISHERMAN LOCAL HERO", {
+      fontFamily: 'monospace',
+      fontSize: 52,
+      fontStyle: 'bold',
+      color: '#3c096c',
+      // align: 'center'
+    })
 
     this.model = this.sys.game.globals.model;
 

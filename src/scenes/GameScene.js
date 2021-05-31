@@ -2,6 +2,7 @@ import 'phaser';
 import Chaser from '../entities/Chaser';
 import GunShip from '../entities/GunShip';
 import Player from '../entities/Player';
+import ScrollingBackground from '../entities/ScrollingBackground';
 import Submarine from '../entities/Submarine';
 
 
@@ -42,6 +43,13 @@ export default class GameScene extends Phaser.Scene {
         this.sound.add("sndExplode1")
       ],
       arrow: this.sound.add("sndArrow")
+    }
+
+    this.backgrounds = [];
+
+    for (let i = 0; i < 5; i++) {
+      let bg = new ScrollingBackground(this, "sprBg0", i * 10);
+      this.backgrounds.push(bg);
     }
 
     this.player = new Player(
@@ -115,6 +123,7 @@ export default class GameScene extends Phaser.Scene {
       if (!player.getData("isDead") &&
          !enemy.getData("isDead")) {
            player.explode(false);
+           player.onDestroy();
            enemy.explode(true);
          }
     });
@@ -123,6 +132,7 @@ export default class GameScene extends Phaser.Scene {
       if (!player.getData("isDead") &&
         !laser.getData("isDead")) {
           player.explode(false);
+          player.onDestroy();
           laser.destroy();
         }
     })
@@ -172,7 +182,7 @@ export default class GameScene extends Phaser.Scene {
       }
     }
 
-    for (var i = 0; i < this.enemyLasers.getChildren().length; i++) {
+    for (let i = 0; i < this.enemyLasers.getChildren().length; i++) {
       let laser = this.enemyLasers.getChildren()[i];
       laser.update();
 
@@ -186,7 +196,7 @@ export default class GameScene extends Phaser.Scene {
         }
     }
 
-    for (var i = 0; i < this.playerArrows.getChildren().length; i++) {
+    for (let i = 0; i < this.playerArrows.getChildren().length; i++) {
       let laser = this.playerArrows.getChildren()[i];
       laser.update();
 
@@ -198,6 +208,10 @@ export default class GameScene extends Phaser.Scene {
             laser.destroy();
           }
         }
+    }
+
+    for (let i = 0; i > this.backgrounds.length; i++) {
+      this.backgrounds[i].update();
     }
 
 

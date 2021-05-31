@@ -25,7 +25,7 @@ export default class PreloaderScene extends Phaser.Scene {
     let loadingText = this.make.text({
       x: width / 2,
       y: height / 2 - 50,
-      text: 'waiting swell...',
+      text: 'loading...',
       style: {
         font: '20px monospace',
         fill: '#fff'
@@ -70,7 +70,7 @@ export default class PreloaderScene extends Phaser.Scene {
     // update file progress text
 
     this.load.on('fileprogress', function(file) {
-      assetText.setText('Loading deep ocean animals..' + file.key);
+      assetText.setText('Deep ocean animals..' + file.key);
     });
 
     // remove progress bar when complete
@@ -95,6 +95,9 @@ export default class PreloaderScene extends Phaser.Scene {
     this.load.image('checkedBox', 'assets/ui/blue_boxCheckmark.png');
     this.load.image('bgMenu', 'assets/bgMenu.png')
     this.load.audio('bgMusic', 'assets/bgMusicBeach.mp3');
+    this.load.image('sprBtnRestart', 'assets/ui/sprBtnRestart.png');
+    this.load.image('sprBtnRestartDown', 'assets/ui/sprBtnRestartDown.png')
+    this.load.image('sprBtnRestartHover', 'assets/ui/sprBtnRestartHover.png')
 
     // GAME ASSETS
 
@@ -131,6 +134,8 @@ export default class PreloaderScene extends Phaser.Scene {
     this.load.audio("sndExplode1", 'assets/audio/sndExplode1.wav');
     this.load.audio("sndArrow", 'assets/audio/sndArrow.wav');
   }
+
+  
 
 
   ready () {

@@ -28,6 +28,17 @@ export default class Player extends Entity {
     this.body.velocity.x = this.getData("speed");
   }
 
+  onDestroy() {
+    this.scene.time.addEvent({
+      delay: 1000,
+      callback: function(){
+        this.scene.scene.start("GameOverScene");
+      },
+      callbackScope: this,
+      loop: false
+    })
+  }
+
   update() {
     this.body.setVelocity(0, 0);
 
@@ -47,6 +58,4 @@ export default class Player extends Entity {
       }
     }
   }
-
-
 }
