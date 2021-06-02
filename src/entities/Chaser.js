@@ -10,6 +10,7 @@ export default class Chaser extends Entity {
       CHASE: "CHASE"
     };
     this.state = this.states.MOVE_DOWN;
+    this.score = 53;
   }
 
   update() {

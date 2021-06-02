@@ -18,7 +18,7 @@ export default class TitleScene extends Phaser.Scene {
     this.gameButton = new Button(
         this,
         config.width/2,
-        config.height/2 - 100,
+        config.height/2 - 80,
         'blueButton1',
         'blueButton2',
         'Play',
@@ -38,11 +38,21 @@ export default class TitleScene extends Phaser.Scene {
     this.creditsButton = new Button(
       this,
       config.width/2,
-      config.height/2 + 100,
+      config.height/2 + 80,
       'blueButton1',
       'blueButton2',
       'Credits',
       'Credits'
+    );
+
+    this.scoresButton = new Button(
+      this,
+      config.width/2,
+      config.height/2 + 160,
+      'blueButton1',
+      'blueButton2',
+      'Ranking',
+      'Highscore'
     );
 
     this.title = this.add.text(this.game.config.width * 0.1, 75, "FISHERMAN LOCAL HERO", {

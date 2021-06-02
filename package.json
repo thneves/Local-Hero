@@ -23,6 +23,7 @@
   "dependencies": {
     "babel-core": "^6.26.3",
     "clean-webpack-plugin": "^4.0.0-alpha.0",
+    "node-fetch": "^2.6.1",
     "phaser": "^3.54.0"
   }
 }

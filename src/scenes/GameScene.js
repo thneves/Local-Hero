@@ -4,7 +4,7 @@ import GunShip from '../entities/GunShip';
 import Player from '../entities/Player';
 import ScrollingBackground from '../entities/ScrollingBackground';
 import Submarine from '../entities/Submarine';
-
+import { saveScore } from '../config/localStorage';
 
 export default class GameScene extends Phaser.Scene {
   constructor() {
@@ -16,6 +16,10 @@ export default class GameScene extends Phaser.Scene {
   }
 
   create() {
+
+    let score = 0;
+    let showScore = this.add.text(16, 16, 'score: 0', { fontSize: '32px', fill: '#ccc'});
+
     this.anims.create({
       key: "sprEnemy0",
       frames: this.anims.generateFrameNumbers("sprEnemy0"),
@@ -59,10 +63,10 @@ export default class GameScene extends Phaser.Scene {
       "sprPlayer"
     );
 
-    this.keyW = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.W)
-    this.keyS = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.S)
-    this.keyA = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.A)
-    this.keyD = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.D)
+    this.keyW = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.UP)
+    this.keyS = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.DOWN)
+    this.keyA = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.LEFT)
+    this.keyD = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.RIGHT)
     this.keySpace = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE)
 
     this.enemies = this.add.group();
@@ -110,6 +114,9 @@ export default class GameScene extends Phaser.Scene {
 
     this.physics.add.collider(this.playerArrows, this.enemies, function(playerArrow, enemy){
       if (enemy) {
+        score += enemy.score;
+        saveScore(score);
+        showScore.setText(`Score: ${score}`)
         if (enemy.onDestroy !== undefined) {
           enemy.onDestroy();
         }
@@ -213,8 +220,6 @@ export default class GameScene extends Phaser.Scene {
     for (let i = 0; i > this.backgrounds.length; i++) {
       this.backgrounds[i].update();
     }
-
-
   }
 
   getEnemiesByType(type) {

@@ -7,6 +7,7 @@ export default class GunShip extends Entity {
     super(scene, x, y, "sprEnemy0", "GunShip");
       this.play("sprEnemy0");
       this.body.velocity.y = 75;
+      this.score = 42;
 
       this.shootTimer = this.scene.time.addEvent({
         delay: 1000,
