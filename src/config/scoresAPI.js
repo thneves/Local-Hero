@@ -2,24 +2,6 @@ import "regenerator-runtime/runtime.js";
 
 const fetch = require('node-fetch');
 
-const initializeGame = async () => {
-  try {
-    const request = await fetch('https://us-central1-js-capstone-backend.cloudfunctions.net/api/games/', {
-      method: 'POST',
-      headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ user: player, score}),
-    });
-    const response = await request.json();
-    return response;
-  } catch (err) {
-    throw new Error('Unable to initialize game. Please try again.');
-  }
-};
-
-
 const postScore = async (player, score) => {
   try {
     const request = await fetch('https://us-central1-js-capstone-backend.cloudfunctions.net/api/games/jD9rgfz1qMpd37Se0rcs/scores',{

@@ -4,7 +4,7 @@
   "description": "Shooter Game with Phaser 3",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
     "build": "webpack",
     "start": "webpack server --open"
   },
@@ -16,14 +16,22 @@
     "babel-loader": "^7.1.5",
     "babel-preset-env": "^1.7.0",
     "copy-webpack-plugin": "^8.1.1",
+    "jest": "^27.0.3",
+    "jest-canvas-mock": "^2.3.1",
     "webpack": "^5.37.0",
     "webpack-cli": "^4.7.0",
     "webpack-dev-server": "^3.11.2"
   },
   "dependencies": {
     "babel-core": "^6.26.3",
+    "canvas": "^2.8.0",
     "clean-webpack-plugin": "^4.0.0-alpha.0",
     "node-fetch": "^2.6.1",
     "phaser": "^3.54.0"
+  },
+  "jest": {
+    "setupFiles": [
+      "jest-canvas-mock"
+    ]
   }
 }
