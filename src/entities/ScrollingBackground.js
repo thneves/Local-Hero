@@ -1,4 +1,4 @@
-import 'phaser';
+import Phaser from 'phaser';
 
 export default class ScrollingBackground {
   constructor(scene, key, velocityY) {
@@ -10,13 +10,13 @@ export default class ScrollingBackground {
   }
 
   createLayers() {
-    for (let i = 0; i < 2; i++) {
-      let layer = this.scene.add.sprite(0, 0, this.key);
+    for (let i = 0; i < 2; i += 1) {
+      const layer = this.scene.add.sprite(0, 0, this.key);
       layer.y = (layer.displayHeight * i);
-      let flipX = Phaser.Math.Between(0, 10) >= 5 ? -1 : 1;
-      let flipY = Phaser.Math.Between(0, 10) >= 5 ? -1 : 1;
+      const flipX = Phaser.Math.Between(0, 10) >= 5 ? -1 : 1;
+      const flipY = Phaser.Math.Between(0, 10) >= 5 ? -1 : 1;
       layer.setScale(flipX * 2, flipY * 2);
-      layer.setDepth(-5 - (i -1));
+      layer.setDepth(-5 - (i - 1));
       this.scene.physics.world.enableBody(layer, 0);
       layer.body.velocity.y = this.velocityY;
 
@@ -26,8 +26,9 @@ export default class ScrollingBackground {
 
   update() {
     if (this.layers.getChildren()[0].y > 0) {
-      for (let i = 0; i > this.layers.getChildren().length; i++) {
-        let layer = this.layers.getChildren()[i];
+      /* eslint-disable-next-line for-direction */
+      for (let i = 0; i > this.layers.getChildren().length; i += 1) {
+        const layer = this.layers.getChildren()[i];
         layer.y = (-layer.displayHeight) + (layer.displayHeight * i);
       }
     }

@@ -8,12 +8,12 @@ module.exports = {
 
   entry: {
     app: './src/index.js',
-    'production-dependencies': ['phaser']
+    'production-dependencies': ['phaser'],
   },
 
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: '[name].js'
+    filename: '[name].js',
   },
 
   module: {
@@ -24,11 +24,11 @@ module.exports = {
         use: {
           loader: 'babel-loader',
           options: {
-            presets: ['env']
-          }
-        }
-      }
-    ]
+            presets: ['env'],
+          },
+        },
+      },
+    ],
   },
 
   devServer: {
@@ -38,27 +38,27 @@ module.exports = {
   plugins: [
     new CopyPlugin({
       patterns: [
-        { 
+        {
           from: path.resolve(__dirname, 'index.html'),
-          to: path.resolve(__dirname,'dist')
+          to: path.resolve(__dirname, 'dist'),
         },
         {
           from: path.resolve(__dirname, 'assets', '**', '*'),
-          to: path.resolve(__dirname, 'dist')
-        }
-      ]
+          to: path.resolve(__dirname, 'dist'),
+        },
+      ],
     }),
     new CleanWebpackPlugin(),
     new webpack.DefinePlugin({
       'typeof CANVAS_RENDERER': JSON.stringify(true),
-      'typeof WEBGL_RENDERER': JSON.stringify(true)
-    })
+      'typeof WEBGL_RENDERER': JSON.stringify(true),
+    }),
   ],
 
   optimization: {
     splitChunks: {
       name: 'production-dependencies',
-      filename: 'production-dependencies.js'
-    }
-  }
-}
+      filename: 'production-dependencies.js',
+    },
+  },
+};

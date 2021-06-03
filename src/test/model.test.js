@@ -33,5 +33,5 @@ describe('Defines global settings of sounds', () => {
     expect(model.musicOn).toBe(true);
     model.musicOn = false;
     expect(model.musicOn).toBe(false);
-  })
-})
+  });
+});

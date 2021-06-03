@@ -1,4 +1,4 @@
-import 'phaser';
+import Phaser from 'phaser';
 import config from '../config/config';
 import Button from '../objects/Button';
 
@@ -8,60 +8,59 @@ export default class TitleScene extends Phaser.Scene {
   }
 
   create() {
-
     this.load.image('sprBtnRestart', 'assets/ui/sprBtnRestart.png');
-    this.load.image('sprBtnRestartDown', 'assets/ui/sprBtnRestartDown.png')
-    this.load.image('sprBtnRestartHover', 'assets/ui/sprBtnRestartHover.png')
+    this.load.image('sprBtnRestartDown', 'assets/ui/sprBtnRestartDown.png');
+    this.load.image('sprBtnRestartHover', 'assets/ui/sprBtnRestartHover.png');
 
-    this.add.image(400,300, 'bgMenu').setScale(0.4)
+    this.add.image(400, 300, 'bgMenu').setScale(0.4);
     // Game
     this.gameButton = new Button(
-        this,
-        config.width/2,
-        config.height/2 - 80,
-        'blueButton1',
-        'blueButton2',
-        'Play',
-        'Game'
-       );
-    
+      this,
+      config.width / 2,
+      config.height / 2 - 80,
+      'blueButton1',
+      'blueButton2',
+      'Play',
+      'Game',
+    );
+
     this.optionsButton = new Button(
       this,
-      config.width/2,
-      config.height/2,
+      config.width / 2,
+      config.height / 2,
       'blueButton1',
       'blueButton2',
       'Options',
-      'Options'
+      'Options',
     );
 
     this.creditsButton = new Button(
       this,
-      config.width/2,
-      config.height/2 + 80,
+      config.width / 2,
+      config.height / 2 + 80,
       'blueButton1',
       'blueButton2',
       'Credits',
-      'Credits'
+      'Credits',
     );
 
     this.scoresButton = new Button(
       this,
-      config.width/2,
-      config.height/2 + 160,
+      config.width / 2,
+      config.height / 2 + 160,
       'blueButton1',
       'blueButton2',
       'Ranking',
-      'Highscore'
+      'Highscore',
     );
 
-    this.title = this.add.text(this.game.config.width * 0.1, 75, "FISHERMAN LOCAL HERO", {
+    this.title = this.add.text(this.game.config.width * 0.1, 75, 'FISHERMAN LOCAL HERO', {
       fontFamily: 'monospace',
       fontSize: 52,
       fontStyle: 'bold',
       color: '#3c096c',
       // align: 'center'
-    })
+    });
 
     this.model = this.sys.game.globals.model;
 

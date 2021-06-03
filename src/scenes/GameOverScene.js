@@ -5,7 +5,7 @@ import { postScore } from '../config/scoresAPI';
 
 export default class GameOverScene extends Phaser.Scene {
   constructor() {
-    super({ key: "GameOverScene" });
+    super({ key: 'GameOverScene' });
   }
 
   scoreForm(score) {
@@ -30,7 +30,6 @@ export default class GameOverScene extends Phaser.Scene {
 
       if (this.player) {
         postScore(this.player, score).then(setTimeout(() => {
-          console.log('posting score');
         }, 3000));
         this.scene.start('Title');
       }
@@ -40,44 +39,44 @@ export default class GameOverScene extends Phaser.Scene {
   }
 
   create() {
-    this.title = this.add.text(this.game.config.width * 0.5, 128, "GAME OVER", {
+    this.title = this.add.text(this.game.config.width * 0.5, 128, 'GAME OVER', {
       fontFamily: 'monospace',
       fontSize: 48,
       fontStyle: 'bold',
       color: '#3c096c',
-      align: 'center'
+      align: 'center',
     });
 
     this.title.setOrigin(0.5);
 
-    let playerScore = getLocalScore();
+    const playerScore = getLocalScore();
     resetScores();
 
-    this.message = this.add.text(config.width*0.375, 200, `SCORE: ${playerScore}`);
+    this.message = this.add.text(config.width * 0.375, 200, `SCORE: ${playerScore}`);
 
     const form = this.scoreForm(playerScore);
     const element = this.add.dom(this.game.config.width * 0.5, -300, form);
     element.setDepth(3);
 
-  //   this.btnRestart = this.add.sprite(
-  //     this.game.config.width * 0.5,
-  //     this.game.config.height * 0.5,
-  //     "sprBtnRestart"
-  //   );
+    //   this.btnRestart = this.add.sprite(
+    //     this.game.config.width * 0.5,
+    //     this.game.config.height * 0.5,
+    //     "sprBtnRestart"
+    //   );
 
-  //   this.btnRestart.setInteractive();
+    //   this.btnRestart.setInteractive();
 
-  //   this.btnRestart.on("pointerover", function() {
-  //     this.btnRestart.setTexture("sprBtnRestartHover");
-  //   }, this);
+    //   this.btnRestart.on("pointerover", function() {
+    //     this.btnRestart.setTexture("sprBtnRestartHover");
+    //   }, this);
 
-  //   this.btnRestart.on("pointerout", function() {
-  //     this.setTexture("sprBtnRestart");
-  //   });
+    //   this.btnRestart.on("pointerout", function() {
+    //     this.setTexture("sprBtnRestart");
+    //   });
 
-  //   this.btnRestart.on("pointerdown", function() {
-  //     this.btnRestart.setTexture("sprBtnRestartDown");
-  //   }, this);
+    //   this.btnRestart.on("pointerdown", function() {
+    //     this.btnRestart.setTexture("sprBtnRestartDown");
+    //   }, this);
 
   //   this.btnRestart.on("pointerup", function() {
   //     // this.btnRestart.setTexture("sprBtnRestart");
