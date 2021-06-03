@@ -37,7 +37,7 @@ export default class GameOverScene extends Phaser.Scene {
     this.menuButton = new Button(
       this,
       config.width / 2,
-      config.height / 2,
+      config.height / 2 + 175,
       'blueButton1',
       'blueButton2',
       'Menu',
