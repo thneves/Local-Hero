@@ -17,7 +17,7 @@ Test coverage made with Jest.
 
 ## Live Demo
 
-<a href="" target="_blank">Live version</a>
+<a href="https://thneves.github.io/Local-Hero/" target="_blank">Live version</a>
 
 ## Getting Started
 
@@ -33,13 +33,17 @@ To get a local copy up and running follow these simple example steps.
 
 `cd Local-Hero`
 
+### Install packages
+
+- Run `npm install` in the terminal.
+
 ### Run Game Locally
 
-- Type `npm run start` in the console
+- Run `npm run start` in the terminal.
 
 ### Run Test
 
-- Type `npm test` in the console
+- Run `npm test` in the terminal.
 
 ## Game Design
 
@@ -63,11 +67,11 @@ To get a local copy up and running follow these simple example steps.
 
 ### Enemies info
 
-|Space Ship                                      |Description                            |Points                |
+|Enemies                                     |Description                            |Points                |
 |-------------------------------------------|---------------------------------------|--------------------|
-|![Submarine](./assets/chars/sprEnemy2.png)   |Big Submarine coming in your direction |10             |
-|![Gun Boat](./assets/chars/sprEnemy0.png) |A Boat thats shoots lasers | 30|
-|![Chaser Bomb](./assets/chars/sprEnemy1.png)  |A bomb that will follow you  | 50 |
+|![Submarine](./assets/chars/sprEnemy2.png)   |Big Submarine coming in your direction |23             |
+|![Gun Boat](./assets/chars/sprEnemy0.png) |A Boat that shoots lasers | 42|
+|![Chaser Bomb](./assets/chars/sprEnemy1.png)  |A bomb that will follow you  | 53 |
 
 ## Author
 ​
