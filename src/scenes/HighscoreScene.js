@@ -18,7 +18,7 @@ export default class GameOverScene extends Phaser.Scene {
     });
     this.title.setOrigin(0.5);
 
-    getScores().then(response => {
+    getScores().then((response) => {
       response.sort((a, b) => b[1] - a[1])
         .slice(0, 5)
         .map((game, i) => {

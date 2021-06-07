@@ -30,7 +30,7 @@ const getScores = async () => {
     });
     const response = await request.json();
     const data = response.result;
-    data.forEach(entry => {
+    data.forEach((entry) => {
       scoreboard.push([entry.user, entry.score]);
     });
     return scoreboard;
