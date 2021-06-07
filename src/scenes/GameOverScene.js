@@ -57,30 +57,5 @@ export default class GameOverScene extends Phaser.Scene {
     const form = this.scoreForm(playerScore);
     const element = this.add.dom(this.game.config.width * 0.5, -300, form);
     element.setDepth(3);
-
-    //   this.btnRestart = this.add.sprite(
-    //     this.game.config.width * 0.5,
-    //     this.game.config.height * 0.5,
-    //     "sprBtnRestart"
-    //   );
-
-    //   this.btnRestart.setInteractive();
-
-    //   this.btnRestart.on("pointerover", function() {
-    //     this.btnRestart.setTexture("sprBtnRestartHover");
-    //   }, this);
-
-    //   this.btnRestart.on("pointerout", function() {
-    //     this.setTexture("sprBtnRestart");
-    //   });
-
-    //   this.btnRestart.on("pointerdown", function() {
-    //     this.btnRestart.setTexture("sprBtnRestartDown");
-    //   }, this);
-
-  //   this.btnRestart.on("pointerup", function() {
-  //     // this.btnRestart.setTexture("sprBtnRestart");
-  //     this.scene.start("Title")
-  //   }, this)
   }
 }
