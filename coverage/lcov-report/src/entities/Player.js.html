@@ -116,8 +116,7 @@
 <a name='L57'></a><a href='#L57'>57</a>
 <a name='L58'></a><a href='#L58'>58</a>
 <a name='L59'></a><a href='#L59'>59</a>
-<a name='L60'></a><a href='#L60'>60</a>
-<a name='L61'></a><a href='#L61'>61</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L60'></a><a href='#L60'>60</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -168,7 +167,6 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -177,45 +175,45 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import 'phaser';
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import Phaser from 'phaser';
 import Entity from './Entities';
 import PlayerArrows from './PlayerArrow';
 &nbsp;
 export default class Player extends Entity {
-<span class="fstat-no" title="function not covered" >  co</span>nstructor(scene, x, y, key){
-<span class="cstat-no" title="statement not covered" >    super(scene, x, y, key, "Player");</span>
-<span class="cstat-no" title="statement not covered" >    this.setData("speed", 200);</span>
-<span class="cstat-no" title="statement not covered" >    this.play("sprPlayer");</span>
-<span class="cstat-no" title="statement not covered" >    this.setData("isShooting", false);</span>
-<span class="cstat-no" title="statement not covered" >    this.setData("timerShootDelay", 10);</span>
-<span class="cstat-no" title="statement not covered" >    this.setData("timerShootTick", this.getData("timerShootDelay") - 1);</span>
+<span class="fstat-no" title="function not covered" >  co</span>nstructor(scene, x, y, key) {
+<span class="cstat-no" title="statement not covered" >    super(scene, x, y, key, 'Player');</span>
+<span class="cstat-no" title="statement not covered" >    this.setData('speed', 200);</span>
+<span class="cstat-no" title="statement not covered" >    this.play('sprPlayer');</span>
+<span class="cstat-no" title="statement not covered" >    this.setData('isShooting', false);</span>
+<span class="cstat-no" title="statement not covered" >    this.setData('timerShootDelay', 10);</span>
+<span class="cstat-no" title="statement not covered" >    this.setData('timerShootTick', this.getData('timerShootDelay') - 1);</span>
   }
 &nbsp;
 <span class="fstat-no" title="function not covered" >  mo</span>veUp() {
-<span class="cstat-no" title="statement not covered" >    this.body.velocity.y = -this.getData("speed");</span>
+<span class="cstat-no" title="statement not covered" >    this.body.velocity.y = -this.getData('speed');</span>
   }
 &nbsp;
 <span class="fstat-no" title="function not covered" >  mo</span>veDown() {
-<span class="cstat-no" title="statement not covered" >    this.body.velocity.y = this.getData("speed");</span>
+<span class="cstat-no" title="statement not covered" >    this.body.velocity.y = this.getData('speed');</span>
   }
 &nbsp;
 <span class="fstat-no" title="function not covered" >  mo</span>veLeft() {
-<span class="cstat-no" title="statement not covered" >    this.body.velocity.x = -this.getData("speed");</span>
+<span class="cstat-no" title="statement not covered" >    this.body.velocity.x = -this.getData('speed');</span>
   }
 &nbsp;
 <span class="fstat-no" title="function not covered" >  mo</span>veRight() {
-<span class="cstat-no" title="statement not covered" >    this.body.velocity.x = this.getData("speed");</span>
+<span class="cstat-no" title="statement not covered" >    this.body.velocity.x = this.getData('speed');</span>
   }
 &nbsp;
 <span class="fstat-no" title="function not covered" >  on</span>Destroy() {
 <span class="cstat-no" title="statement not covered" >    this.scene.time.addEvent({</span>
       delay: 1000,
-      callback: <span class="fstat-no" title="function not covered" >fu</span>nction(){
-<span class="cstat-no" title="statement not covered" >        this.scene.scene.start("GameOverScene");</span>
+<span class="fstat-no" title="function not covered" >      ca</span>llback() {
+<span class="cstat-no" title="statement not covered" >        this.scene.scene.start('GameOverScene');</span>
       },
       callbackScope: this,
-      loop: false
-    })
+      loop: false,
+    });
   }
 &nbsp;
 <span class="fstat-no" title="function not covered" >  up</span>date() {
@@ -224,16 +222,15 @@ export default class Player extends Entity {
 <span class="cstat-no" title="statement not covered" >    this.x = Phaser.Math.Clamp(this.x, 0, this.scene.game.config.width);</span>
 <span class="cstat-no" title="statement not covered" >    this.y = Phaser.Math.Clamp(this.y, 0, this.scene.game.config.height);</span>
 &nbsp;
-<span class="cstat-no" title="statement not covered" >    if (this.getData("isShooting")) {</span>
-<span class="cstat-no" title="statement not covered" >      if (this.getData("timerShootTick") &lt; this.getData("timerShootDelay")) {</span>
-<span class="cstat-no" title="statement not covered" >        this.setData("timerShootTick", this.getData("timerShootTick") + 1);</span>
-      }
-      else {
-        let arrow = <span class="cstat-no" title="statement not covered" >new PlayerArrows(this.scene, this.x, this.y);</span>
+<span class="cstat-no" title="statement not covered" >    if (this.getData('isShooting')) {</span>
+<span class="cstat-no" title="statement not covered" >      if (this.getData('timerShootTick') &lt; this.getData('timerShootDelay')) {</span>
+<span class="cstat-no" title="statement not covered" >        this.setData('timerShootTick', this.getData('timerShootTick') + 1);</span>
+      } else {
+        const arrow = <span class="cstat-no" title="statement not covered" >new PlayerArrows(this.scene, this.x, this.y);</span>
 <span class="cstat-no" title="statement not covered" >        this.scene.playerArrows.add(arrow);</span>
 &nbsp;
 <span class="cstat-no" title="statement not covered" >        this.scene.sfx.arrow.play();</span>
-<span class="cstat-no" title="statement not covered" >        this.setData("timerShootTick", 0)</span>
+<span class="cstat-no" title="statement not covered" >        this.setData('timerShootTick', 0);</span>
       }
     }
   }
@@ -244,7 +241,7 @@ export default class Player extends Entity {
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank">istanbul</a>
-                at Wed Jun 02 2021 20:38:23 GMT-0300 (Brasilia Standard Time)
+                at Tue Jun 08 2021 15:14:22 GMT-0300 (Brasilia Standard Time)
             </div>
         </div>
         <script src="../../prettify.js"></script>

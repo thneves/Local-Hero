@@ -9,14 +9,19 @@ getScores.fetch = jest.fn(() => Promise.resolve({
   json: () => Promise.resolve(),
 }));
 
+
 describe('Post new scores', () => {
   test('Post new score with its username', () => postScore('user', 10).then((response) => {
     expect(response.result).toStrictEqual('Leaderboard score created correctly.');
+    expect(typeof response).toBe('object');
+    expect(typeof response).not.toBe('array');
   }));
 });
 
 describe('Get scores from API', () => {
-  test('It must resturn an object', () => getScores().then((response) => {
+  test('It must return an object', () => getScores().then((response) => {
     expect(typeof response).toBe('object');
+    expect(typeof reponse).not.toBe('array');
   }));
 });
+

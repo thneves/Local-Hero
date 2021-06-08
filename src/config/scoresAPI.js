@@ -7,7 +7,6 @@ const postScore = async (player, score) => {
     if (score === 0) {
       score += 1;
     }
-    console.log(score);
     const request = await fetch('https://us-central1-js-capstone-backend.cloudfunctions.net/api/games/jD9rgfz1qMpd37Se0rcs/scores', {
       method: 'POST',
       headers: {
