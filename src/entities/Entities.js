@@ -27,8 +27,7 @@ export default class Entity extends Phaser.GameObjects.Sprite {
       this.setAngle(0);
       this.body.setVelocity(0, 0);
 
-      // eslint-disable-next-line func-names
-      this.on('animationcomplete', function () {
+      this.on('animationcomplete', () => {
         if (canDestroy) {
           this.destroy();
         } else {

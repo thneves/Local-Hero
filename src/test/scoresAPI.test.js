@@ -9,7 +9,6 @@ getScores.fetch = jest.fn(() => Promise.resolve({
   json: () => Promise.resolve(),
 }));
 
-
 describe('Post new scores', () => {
   test('Post new score with its username', () => postScore('user', 10).then((response) => {
     expect(response.result).toStrictEqual('Leaderboard score created correctly.');
@@ -24,4 +23,3 @@ describe('Get scores from API', () => {
     expect(typeof reponse).not.toBe('array');
   }));
 });
-
